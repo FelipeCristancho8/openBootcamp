@@ -1,7 +1,14 @@
 package com.ejercicios.ejercicios;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+        Saludo saludo = (Saludo) context.getBean("saludo");
+        System.out.println(saludo.saludar());
     }
 }
