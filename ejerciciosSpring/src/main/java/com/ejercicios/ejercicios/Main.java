@@ -8,7 +8,9 @@ public class Main {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
-        Saludo saludo = (Saludo) context.getBean("saludo");
-        System.out.println(saludo.saludar());
+        NotificacionService notificacionService = (NotificacionService) context.getBean("notificacionService");
+        UserService userService = (UserService) context.getBean("userService");
+
+        System.out.println(userService.notificacionService.saludar());
     }
 }
