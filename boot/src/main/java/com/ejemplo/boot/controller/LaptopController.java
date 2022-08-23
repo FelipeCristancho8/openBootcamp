@@ -2,11 +2,10 @@ package com.ejemplo.boot.controller;
 
 import com.ejemplo.boot.entity.Laptop;
 import com.ejemplo.boot.repository.LaptopRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/laptops")
@@ -21,5 +20,11 @@ public class LaptopController {
     @GetMapping
     public List<Laptop> getAll(){
         return this.laptopRepository.findAll();
+    }
+
+    @PostMapping
+    public void createLaptop(@RequestBody Laptop laptop){
+        Objects.nonNull(laptop);
+        this.laptopRepository.save(laptop);
     }
 }
