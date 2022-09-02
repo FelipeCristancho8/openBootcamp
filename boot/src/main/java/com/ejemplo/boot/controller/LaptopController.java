@@ -43,8 +43,8 @@ public class LaptopController {
 
     @PostMapping
     @ApiOperation("Guarda en base de datos una nueva laptop que se pasa como RequestBody")
-    public void createLaptop(@RequestBody Laptop laptop){
-        this.laptopRepository.save(laptop);
+    public ResponseEntity<Laptop> createLaptop(@RequestBody Laptop laptop){
+        return ResponseEntity.ok(this.laptopRepository.save(laptop));
     }
 
     @PutMapping
